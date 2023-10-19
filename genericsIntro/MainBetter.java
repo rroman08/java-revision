@@ -31,8 +31,11 @@ public class MainBetter {
         System.out.println("=".repeat(30));
 
         // USE THE GENERIC TEAM:
-        GenericTeam<FootballPlayer> bayern = new GenericTeam<>("Bayern Munich");
-        GenericTeam<FootballPlayer> bvb = new GenericTeam<>("Borussia Dortmund");
+        var munich = new Affiliation("Munich", "City", "GER");
+        var dortmund = new Affiliation("Dortmund", "City", "GER");
+
+        GenericTeam<FootballPlayer, Affiliation> bayern = new GenericTeam<>("Bayern Munich", munich);
+        GenericTeam<FootballPlayer, Affiliation> bvb = new GenericTeam<>("Borussia Dortmund", dortmund);
 
         scoreResult(bayern, 3, bvb, 5);
         var kane = new FootballPlayer("Harry Kane", "Forward");
@@ -47,6 +50,15 @@ public class MainBetter {
         bayern.listTeamMembers();
         var reus = new FootballPlayer("Marco Reus", "Midfielder");
         bvb.addTeamMember(reus);
+
+        System.out.println("=".repeat(30));
+        GenericTeam<RugbyPlayer, Affiliation> france = new GenericTeam<>("France National Team");
+        GenericTeam<RugbyPlayer, Affiliation> england = new GenericTeam<>("England National Team");
+        france.addTeamMember(new RugbyPlayer("Antoine Dupont", "Scrum Half"));
+        england.addTeamMember(new RugbyPlayer("Owen Farrell", "Fly Half"));
+        france.listTeamMembers();
+        england.listTeamMembers();
+
 
     }
 
