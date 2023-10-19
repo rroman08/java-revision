@@ -1,0 +1,41 @@
+
+GENERICS INTRODUCTION
+=====================
+
+Generics allow us to create classes, to design them, in a general way, without
+really worrying about the specific details of the elements they might contain.
+
+Java's ArrayList are an example of a generic class.
+
+We can use an ArrayList for any type of object, because many of the methods on
+that class can be applied to any type.
+
+
+WHAT ARE GENERICS?
+==================
+
+Java supports generic types, such as classes, record, and interfaces. It also
+supports generic methods.
+
+Regular Class:
+
+    class ITellYou {
+        private String field;
+    }
+
+Generic Class:
+
+    class YouTellMe<T> {
+        private T field;
+    }
+
+* T is called a type identifier.
+
+Reference Type      Type Parameter      Variable Name
+ArrayList           <String>            listOfString
+
+
+Many of Java's libraries are written using generic classes and interfaces.
+
+
+
