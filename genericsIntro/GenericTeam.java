@@ -3,28 +3,30 @@ package genericsIntro;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballTeam {
+public class GenericTeam<T extends Player> {
 
     private String teamName;
-    private List<BaseballPlayer> teamMembers = new ArrayList<>();
+    private List<T> teamMembers = new ArrayList<>();
     private int totalWins = 0;
     private int totalLosses = 0;
     private int totalTies = 0;
 
-    public BaseballTeam(String teamName) {
+    public GenericTeam(String teamName) {
         this.teamName = teamName;
     }
 
-    public void addTeamMember(BaseballPlayer player) {
+    public void addTeamMember(T t) {
 
-        if (!teamMembers.contains(player)) {
-            teamMembers.add(player);
+        if (!teamMembers.contains(t)) {
+            teamMembers.add(t);
         }
     }
 
     public void listTeamMembers() {
-        System.out.print(teamName + " Roster: ");
-        System.out.println(teamMembers);
+        System.out.println(teamName + " Roster: ");
+        for (T t : teamMembers) {
+            System.out.println(t.name());
+        }
     }
 
     public int ranking() {
