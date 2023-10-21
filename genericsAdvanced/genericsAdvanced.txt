@@ -124,3 +124,19 @@ This transformation process is called type erasure, because the T parameter (or 
 erased, or replaced with a true type.
 
 Understanding how type erasure works for overloaded methods may be important.
+
+
+USING MULTIPLE TYPES TO DECLARE AN UPPER BOUND
+==============================================
+
+You can use multiple types to set a more restrictive upper bound, with the use of an ampersand
+between types.
+
+The conditions require a type argument, to implement all interfaces declared, and to be a subtype
+of any class specified.
+
+You can extend only one class and zero to many interfaces.
+
+You use extends for either a class or an interface or both.
+
+If you do extend a class as well as an interface or two, the class must be the first type listed.

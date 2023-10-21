@@ -2,6 +2,8 @@ package genericsAdvanced;
 
 import genericsAdvanced.model.BirkbeckStudent;
 import genericsAdvanced.model.Student;
+import genericsAdvanced.util.QueryItem;
+import genericsAdvanced.util.QueryList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,22 @@ public class Main {
         testList(new ArrayList<String>(List.of("Seraphina", "Raphaëlle", "Allegra",
                 "Roman", "Paula")));
         testList(new ArrayList<Integer>(List.of(1, 2, 3, 4, 5)));
+
+        System.out.println("=".repeat(60));
+
+        var queryList = new QueryList<>(bbkStudents);
+        var matches = queryList.getMatches("Course", "Python");
+        printMoreList(matches);
+
+        System.out.println("=".repeat(60));
+
+        var students2021 = QueryList.getMatches(students,"yearStarted", "2021");
+        printMoreList(students2021);
+
+        System.out.println("=".repeat(60));
+
+//        QueryList<Employee> employeeList = new QueryList<>();
+
     }
 
     // To code it that it works...
@@ -44,6 +62,7 @@ public class Main {
                 System.out.println("Integer: " + integer.floatValue());
             }
         }
+        System.out.println();
     }
 
 //    public static void testList(List<String> list) {
@@ -84,4 +103,13 @@ public class Main {
 //        }
 //        System.out.println();
 //    }
+}
+
+record Employee(String name) implements QueryItem {
+
+
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        return false;
+    }
 }

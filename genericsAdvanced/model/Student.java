@@ -32,6 +32,13 @@ public class Student implements QueryItem {
 
     @Override
     public boolean matchFieldValue(String fieldName, String value) {
-        return false;
+
+        String fName = fieldName.toUpperCase();
+        return switch (fName) {
+            case "NAME" -> name.equalsIgnoreCase(value);
+            case "COURSE" -> course.equalsIgnoreCase(value);
+            case "YEARSTARTED" -> yearStarted == (Integer.parseInt(value));
+            default -> false;
+        };
     }
 }
