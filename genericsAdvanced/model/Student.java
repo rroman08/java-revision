@@ -1,8 +1,10 @@
 package genericsAdvanced.model;
 
+import genericsAdvanced.util.QueryItem;
+
 import java.util.Random;
 
-public class Student {
+public class Student implements QueryItem {
 
     protected static Random random = new Random();
     private static String[] firstNames = {"Seraphina", "Raphaëlle", "Allegra",
@@ -26,5 +28,10 @@ public class Student {
 
     public int getYearStarted() {
         return yearStarted;
+    }
+
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        return false;
     }
 }
