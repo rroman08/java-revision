@@ -1,0 +1,23 @@
+
+You want to use nested classes when your classes are tightly coupled, meaning their
+functionality is interwoven.
+
+Before JDK16, only static nested classes were allowed to have static methods.
+
+As of JDK16, all four types of nested classes can have static members of any type, including static methods.
+
+
+4 DIFFERENT TYPES OF NESTED CLASSES
+===================================
+
+static nested class:
+Declared in class body. Much like a static field, access to this class is through the Class name identifier.
+
+instance or inner class:
+Declared in class body. This type of class can only be accessed through an instance of the outer class.
+
+local class:
+Declared within a method body.
+
+anonymous class:
+Unnamed class, declared and instantiated in same statement.
