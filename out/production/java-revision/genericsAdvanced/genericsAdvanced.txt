@@ -1,0 +1,142 @@
+
+WHAT IS LEFT TO KNOW ABOUT GENERICS?
+====================================
+
+- Using generic references that use type arguments, declared in method parameters and local
+variables.
+
+- Creating generic methods, apart from generic classes.
+
+- Using wildcards in the type argument.
+
+- Understanding static methods with generic types.
+
+- Using multiple upper bounds.
+
+
+THIS IS NOT INHERITANCE
+=======================
+
+When used as reference types, a container of one type has no relationship to the same container
+of another type, even if the contained types do have a relationship (e.g., inheritance).
+
+
+LIMITATION OF A REFERENCE OF GENERIC CLASS WITH A LIST ARGUMENT
+===============================================================
+
+When we declare a variable or method parameter with:
+
+    List<Student>
+
+Only List sup-types with Student elements can be assigned to this variable or method argument.
+WE CANNOT ASSIGN A LIST OF STUDENT SUB-TYPES TO THIS!!!
+
+
+THE GENERIC METHOD
+==================
+
+For a method, type parameters are placed after any modifiers and before the method's return
+type.
+
+    public <T> String myMethod(T input) {
+        return input.toString();
+    }
+
+The type parameter can be referenced in method parameters, or as the method return type, or in
+the method code block, much as we saw a class's type parameter can be used.
+
+A generic method can be used for collections with type arguments, as we just saw, to allow for
+variability of the elements in the collection, without using a raw version of the collection.
+
+A generic method can be used for static methods on a generic class, because static methods cannot
+use class type parameters.
+
+A generic method can be used on a non-generic class, to enforce type rules on a specific method.
+
+The generic method type parameter is separate from a generic class type parameter. In fact, if you
+use T for both, the T declared on the method means a different type, than the T for the class.
+
+
+TYPE PARAMETERS, TYPE ARGUMENTS, AND USING A WILDCARD
+=====================================================
+
+- A TYPE PARAMETER is a generic class, or generic method's declaration type. In both of the examples
+bellow, T is said to be the type parameter.
+
+- You can bind a type parameter with the use of the extends keyword, to specify an upper bound.
+
+Generic class:
+    public class Team<T> {}
+
+Generic method:
+    public <T> void doSomething(T t) {}
+
+
+- A TYPE ARGUMENT declares the type to be used and is specified in a type reference, such as a local
+variable reference, method parameter declaration, or field declaration. In the example below, the
+FootballPlayer is the type argument for the Team class.
+
+Generic class:
+    Team<FootballPlayer> team = new Team<>();
+
+
+- A WILDCARD can only be used in a TYPE ARGUMENT, not in the type parameter declaration.
+
+- A wildcard means the type is unknown and is represented with the ? character.
+
+- A wildcard limits what you can do, when you specify a type in this way.
+
+List declaration using a wildcard:
+    List<?> unknownList;
+
+- A wild card cannot be used in an instantiation of a generic class:
+
+!!! ILLEGAL !!!:
+    var myList = new ArrayList<?>();
+
+- A wildcard can be unbounded, or alternately, specify either and upper or lower bound.
+
+    Argument        Example
+ ================================================
+ 1. unbounded       List<?>
+ 2. upper bound     List<? extends Student>
+ 3. lower bound     List<? super BirkbeckStudent>
+
+1. A List of any type can be passed or assigned to a List using this wildcard.
+2. A List containing any type that is a Student or a subtype of Student can be assigned
+or passed to an argument specifying this wildcard.
+3. A List containing any type that is a BirkbeckStudent or a super type of BirkbeckStudent,
+so in our case, that would be Student and java.lan.Object.
+
+
+TYPE ERASURE
+============
+
+Generics exist to enforce tighter type checks, at compile time.
+
+The compiler transforms a generic class into a typed class, meaning the byte code, or class
+file, contains no type parameters.
+
+Everywhere a type parameter is used in a class, it gets replaced with either the type Object,
+if no upper bound was specified, or the upper bound type itself.
+
+This transformation process is called type erasure, because the T parameter (or S, U, V) is
+erased, or replaced with a true type.
+
+Understanding how type erasure works for overloaded methods may be important.
+
+
+USING MULTIPLE TYPES TO DECLARE AN UPPER BOUND
+==============================================
+
+You can use multiple types to set a more restrictive upper bound, with the use of an ampersand
+between types.
+
+The conditions require a type argument, to implement all interfaces declared, and to be a subtype
+of any class specified.
+
+You can extend only one class and zero to many interfaces.
+
+You use extends for either a class or an interface or both.
+
+If you do extend a class as well as an interface or two, the class must be the first type listed.
