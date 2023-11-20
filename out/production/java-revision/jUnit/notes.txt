@@ -30,3 +30,18 @@ NOW TO RUN THE BANK ACCOUNT TEST:
 3. Brings up 'Create Run/Debug Configuration: 'BankAccountTest'' screen
      >> All option are correct by default, click Ok
 
+
+------------------------------------------------------------
+
+2. The assertArrayEquals() method considers two arrays when their lengths are the same,
+and every element in both arrays is the same (and in the same order). assertEquals() only
+checks whether they are the same instance.
+
+3. The assertNull() and assertNotNull() checks for null (and non-null) values.
+
+4. The assertSame() and assertNotSame() checks whether instances are the same. Compares
+object references.
+
+5. The assertThat() compares the actual value against a matcher. This is more powerful than
+the other assert methods, since we can compare the actual value against a range of values.
+
