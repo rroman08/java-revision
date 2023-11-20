@@ -17,7 +17,7 @@ class BankAccountTest {
     void setup() {
         account = new BankAccount("Roman", "Rudolf", 1_000.00,
                 BankAccount.CHECKING);
-        System.out.println("Running a test...");
+        System.out.print("Running a test... ");
     }
 
     @org.junit.jupiter.api.Test
@@ -33,12 +33,20 @@ class BankAccountTest {
         assertEquals(400.00, balance, 0);
     }
 
-    // DOES NOT WORK!!!
+    // DOES NOT WORK!!! Worked in JUnit4
 //    @org.junit.jupiter.api.Test(expected = IllegalArgumentException.class)
 //    void withdraw_notBranch() throws Exception {
-//        double balance = account.withdraw(600.00, false);
-//        assertEquals(400.00, balance, 0);
+//        account.withdraw(600.00, false);
 //    }
+
+    // EARLIER VERSION WAY OF DOING IT
+    @org.junit.jupiter.api.Test
+    void withdraw_notBranch() throws Exception {
+        try {
+            account.withdraw(600.00, false);
+            fail("Should have thrown an IllegalArgumentException");
+        } catch (IllegalArgumentException ignored) {}
+    }
 
     @org.junit.jupiter.api.Test
     void getBalance_deposit() {
