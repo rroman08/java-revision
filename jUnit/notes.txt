@@ -1,0 +1,32 @@
+
+How to add JUnit to our project...
+----------------------------------
+
+Option one:
+File >> Project Structure >> Libraries >> + (IntelliJ IDEA installation folder)
+
+More convenient way to add it:
+1. Put cursor on public class BankAccount line
+2. Press opt + enter
+3. Click on 'Create Test'
+4. Pop up first time you do this 'No Test Roots Found -- Create test in the same source root?'
+5. Click OK
+6. New pop up appears:
+    Test library::Groovy JUnit (as a default) >> select JUnit4
+        >> if 'JUnit4 library not found in the module' pops up click on Fix
+            >> select 'Use 'JUnit' from IntelliJ Idea distribution' or
+            'Copy 'JUnit4' library files to' >> select the first option
+    Class name::BankAccountTest
+    FOR THE MEMBERS::options for methods to test
+
+NOW TO RESOLVE THE TEST CLASS:
+File >> Project Structure >> Modules >> Select Dependencies >>
+    JUnit::click on Test dropdown >> Select compile >> Ok
+
+
+NOW TO RUN THE BANK ACCOUNT TEST:
+1. Right click outside the class
+2. Select 'Create 'BankAccountTest'...'
+3. Brings up 'Create Run/Debug Configuration: 'BankAccountTest'' screen
+     >> All option are correct by default, click Ok
+
