@@ -1,0 +1,83 @@
+
+For an array, we can simply call Array.sort, and pass it an array, but as previously
+mentioned, the elements in the array, need to implement Comparable.
+
+Types like String, primitive wrapper classes are sortable, that is they do implement
+this interface.
+
+The interface declaration in Java:
+
+    public interface Comparable<T> {
+        int compareTo(T o);
+    }
+
+ANY CLASS THAT IMPLEMENTS THIS INTERFACE NEEDS TO IMPLEMENT THE "compareTo" METHOD.
+
+This method takes one object as an argument, as "o", and compares it to the current
+instance, as "this".
+
+    Resulting Value         Meaning
+    ===============================
+    zero                    0 == this
+    negative value          this < o
+    positive value          this > o
+
+
+WHEN TO USE THE COMPARABLE INTERFACE
+====================================
+
+USE COMPARABLE WHEN YOUR OBJECTS HAVE A NATURAL ORDER. NATURAL ORDER MEANS THAT THE
+.compareTo() METHOD RETURNS A ZERO WHEN BOTH OBJECTS ARE THE SAME, OR THE .equals()
+METHOD RETURNS TRUE.
+
+
+THE COMPARATOR INTERFACE
+========================
+
+The Comparator interface is similar to the Comparable interface, and the two can often
+be confused with each other.
+
+Comparator:
+    public interface Comparator<T> {
+        int compare(T o1, T o2);
+    }
+
+Comparable:
+    public interface Comparable<T> {
+        int compareTo(T o);
+    }
+
+The .compare() method compares the two arguments to one another and not one object to
+the instance itself.
+
+IT IS COMMON PRACTICE TO INCLUDE A Comparator AS A NESTED CLASS.
+
+Array.sort() has an overloaded method that takes a Comparator class as its second argument.
+
+
+SUMMARY OF DIFFERENCES
+======================
+
+Comparable:
+    int compareTo(T o);
+
+Compares the argument with the current instance.
+
+Called from the instance of the class that implements Comparable.
+
+Best practice is to have this.compareTo(o) == 0 and result in this.equals(o) being true.
+
+Array.sort(T[] elements) requires T to implement Comparable.
+
+
+Comparator:
+    int compare(T o1, T o2);
+
+Compares two arguments of the same type with each other.
+
+Called from an instance of Comparator.
+
+Does not require the class itself to implement Comparator, though you could also
+implement in this way.
+
+Arrays.sort(T[] elements, Comparator<T>) does not require T to implement Comparable.
